@@ -4,9 +4,15 @@ import styles from './section-cards.module.css';
 
 const SectionCards = ({ title }) => {
   return (
-    <section className={StyleSheet.container}>
-      <h2 className={StyleSheet.title}>{title}</h2>
-      <div className={StyleSheet.cardWrapper}>
+    <section className={styles.container}>
+      <h2 className={styles.title}>{title}</h2>
+      <div className={styles.cardWrapper}>
+        <Card imgUrl='/static/clifford.webp' size='large' />
+        <Card imgUrl='/static/clifford.webp' size='large' />
+        <Card imgUrl='/static/clifford.webp' size='large' />
+        <Card imgUrl='/static/clifford.webp' size='large' />
+        <Card imgUrl='/static/clifford.webp' size='large' />
+        <Card imgUrl='/static/clifford.webp' size='large' />
         <Card imgUrl='/static/clifford.webp' size='large' />
       </div>
     </section>
