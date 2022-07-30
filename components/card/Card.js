@@ -20,8 +20,6 @@ const Card = ({ imgUrl = defaultImg, size = 'medium', id }) => {
     setImageSrc(defaultImg);
   };
 
-  console.log('\n\n***\n props: ', size, id, '\n***\n');
-
   const scale = id === 0 ? { scaleY: 1.1 } : { scale: 1.1 };
 
   return (
