@@ -2,7 +2,7 @@ import Card from './Card';
 
 import styles from './section-cards.module.css';
 
-const SectionCards = ({ title, videos, size }) => {
+const SectionCards = ({ title, videos = [], size }) => {
   console.log('\n\n***\n vodeps: ', videos, '\n***\n');
   return (
     <section className={styles.container}>
