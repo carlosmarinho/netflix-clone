@@ -31,25 +31,27 @@ export default function Home({
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <NavBar username='ankita@ank.com' />
-      <Banner
-        title='Clifford the red dog'
-        subTitle='a very cute dog'
-        imgUrl='/static/clifford.webp'
-      />
-
-      <div className='styles.sectionWrapper'>
-        <SectionCards title='Disney' videos={disneyVideos} size='large' />
-        <SectionCards title='Travel' videos={travelVideos} size='small' />
-        <SectionCards
-          title='Productivity'
-          videos={ProductivityVideos}
-          size='medium'
+      <div className='styles.main'>
+        <NavBar username='ankita@ank.com' />
+        <Banner
+          title='Clifford the red dog'
+          subTitle='a very cute dog'
+          imgUrl='/static/clifford.webp'
         />
-        <SectionCards title='Popular' videos={popularVideos} size='small' />
-      </div>
 
-      {/* <Card imgUrl='/static/clifford.webp' size='small' /> */}
+        <div className='styles.sectionWrapper'>
+          <SectionCards title='Disney' videos={disneyVideos} size='large' />
+          <SectionCards title='Travel' videos={travelVideos} size='small' />
+          <SectionCards
+            title='Productivity'
+            videos={ProductivityVideos}
+            size='medium'
+          />
+          <SectionCards title='Popular' videos={popularVideos} size='small' />
+        </div>
+
+        {/* <Card imgUrl='/static/clifford.webp' size='small' /> */}
+      </div>
     </div>
   );
 }
