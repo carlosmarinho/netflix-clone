@@ -5,21 +5,24 @@ import Banner from '../components/banner/Banner';
 import NavBar from '../components/nav/navbar';
 import Card from '../components/card/Card';
 import SectionCards from '../components/card/SectionCards';
-import { getVideos } from '../lib/videos';
+import { getPopularVideos, getVideos } from '../lib/videos';
 
 export async function getServerSideProps() {
   const disneyVideos = await getVideos('disney trailer');
   const ProductivityVideos = await getVideos('productivity');
   const travelVideos = await getVideos('travel');
-  // const popularVideos = await getVideos();
+  const popularVideos = await getPopularVideos();
 
-  return { props: { disneyVideos, ProductivityVideos, travelVideos } };
+  return {
+    props: { disneyVideos, ProductivityVideos, travelVideos, popularVideos },
+  };
 }
 
 export default function Home({
   disneyVideos,
   ProductivityVideos,
   travelVideos,
+  popularVideos,
 }) {
   return (
     <div className={styles.container}>
@@ -43,7 +46,7 @@ export default function Home({
           videos={ProductivityVideos}
           size='medium'
         />
-        <SectionCards title='Popular' videos={disneyVideos} size='small' />
+        <SectionCards title='Popular' videos={popularVideos} size='small' />
       </div>
 
       {/* <Card imgUrl='/static/clifford.webp' size='small' /> */}
