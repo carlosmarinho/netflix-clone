@@ -5,6 +5,11 @@ import Link from 'next/link';
 import styles from '../styles/login.modules';
 
 const Login = () => {
+
+  const handleLoginWithEmail = (e) => {
+    console.log('hi button');
+    e.preventDefualt();
+  };
   return (
     <div className={styles.container}>
       <Head>
