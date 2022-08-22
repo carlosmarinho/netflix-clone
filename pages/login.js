@@ -1,15 +1,31 @@
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useState } from 'react';
 
-import styles from '../styles/login.modules';
+import styles from '../styles/login.module.css';
 
 const Login = () => {
+  const [email, setEmail] = useState('');
+  const [userMsg, setUserMsg] = useState('');
+  const isLoading = false;
+
+  const handleOnChangeEmail = (e) => {
+    setUserMsg('');
+    const email = e.target.value;
+    setEmail(email);
+  };
 
   const handleLoginWithEmail = (e) => {
-    console.log('hi button');
-    e.preventDefualt();
+    e.preventDefault();
+    if (email === 'carluizfla@hotmail.com') {
+      //route to dashboard
+    } else {
+      // show user message
+      setUserMsg('Enter a valid email address');
+    }
   };
+
   return (
     <div className={styles.container}>
       <Head>
