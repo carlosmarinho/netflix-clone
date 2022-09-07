@@ -2,30 +2,18 @@ import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+// import { magic } from '../lib/magic-client';
+import { Magic } from 'magic-sdk';
 
 import styles from '../styles/login.module.css';
-import { magic } from '../lib/magic-client';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [userMsg, setUserMsg] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const isLoading = false;
 
   const router = useRouter();
-
-  useEffect(() => {
-    const handleComplete = () => {
-      setIsLoading(false);
-    };
-    router.events.on('routeChangeComplete', handleComplete);
-    router.events.on('routeChangeError', handleComplete);
-
-    return () => {
-      router.events.off('routeChangeComplete', handleComplete);
-      router.events.off('routeChangeError', handleComplete);
-    };
-  }, [router]);
 
   const handleOnChangeEmail = (e) => {
     setUserMsg('');
@@ -35,34 +23,29 @@ const Login = () => {
 
   const handleLoginWithEmail = async (e) => {
     e.preventDefault();
-    setIsLoading(true);
-
     if (email) {
       if (email === 'carluizfla@hotmail.com') {
-        router.push('/');
-        //  log in a user by their email
         try {
-          const didToken = await magic.auth.loginWithMagicLink({
-            email,
-          });
+          console.log('\n\n***\n magic: ', email, '\n***\n');
+          // await magic.auth.loginWithMagicLink({ email });
+          // const didToken = await magic.auth.loginWithMagicLink({ email });
+          // the Magic code
+          const didToken = await new Magic(
+            'pk_live_9E6B1B591581274D'
+          ).auth.loginWithMagicLink({ email });
           console.log({ didToken });
           if (didToken) {
-            setIsLoading(false);
             router.push('/');
           }
         } catch (error) {
-          // Handle errors if required!
-          console.error('Something went wrong logging in', error);
-          setIsLoading(false);
+          //handle errors
+          console.error('Something went wrong loggin in', error);
         }
-        // router.push("/");
       } else {
-        setIsLoading(false);
         setUserMsg('Something went wrong loggin in');
       }
     } else {
       // show user message
-      setIsLoading(false);
       setUserMsg('Enter a valid email address');
     }
   };
