@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Card from './Card';
 
 import styles from './section-cards.module.css';
@@ -8,8 +9,12 @@ const SectionCards = ({ title, videos = [], size }) => {
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.cardWrapper}>
         {videos.map((video, idx) => {
-          // eslint-disable-next-line react/jsx-key
-          return <Card id={idx} imgUrl={video.imgUrl} size={size} />;
+          console.log({ video });
+          return (
+            <Link key={idx} href={`/video/${videoId}`}>
+              <Card key={idx} id={idx} imgUrl={video.imgUrl} size={size} />
+            </Link>
+          );
         })}
         <Card id={0} size={size} />
       </div>

@@ -28,7 +28,6 @@ const Card = ({ imgUrl = defaultImg, size = 'medium', id }) => {
         className={cls(styles.imgMotionWrapper, classMap[size])}
         whileHover={scale}
       >
-        teste
         <Image
           src={imageSrc}
           alt='image '
