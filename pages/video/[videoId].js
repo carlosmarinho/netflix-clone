@@ -16,6 +16,14 @@ const Video = () => {
         overlayClassName={styles.overlay}
         className={styles.modal}
       >
+        <iframe
+          id='ytplayer'
+          type='text/html'
+          width='100%'
+          height='360'
+          src={`https://www.youtube.com/embed/${router.query.videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
+          frameBorder='0'
+        ></iframe>
         <div>Modal body</div>
       </Modal>
     </div>
